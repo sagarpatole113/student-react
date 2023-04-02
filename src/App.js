@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Dashbord from "./components/Dashbord";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NewStudenForm from "./components/NewStudenForm";
+import EditStudentForm from "./components/EditStudentForm";
+import Header from "./components/Header";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function App() {
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<ToastContainer/>
+<BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Header/>}>
+          <Route path="home" element={ <Dashbord/>} /> 
+          <Route path="add-student" element={ <NewStudenForm/>} />
+          <Route path="edit-student" element={<EditStudentForm />} />
+          <Route path="delete-student" element={<Dashbord/>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+<ToastContainer />
     </div>
   );
 }
